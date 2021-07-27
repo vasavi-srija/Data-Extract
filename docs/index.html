@@ -2,35 +2,36 @@
 <html lang="en">
     <head>
       <meta charset="UTF-8" />       
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Document</title>
     </head>
     <style type="text/css">
       .foo{
         background-color: lightgrey;
-        border: 15px solid green;
+        border: 5px solid transparent;
+        border-image: linear-gradient(45deg, #1abc9c, #2ecc71, #9b59b6, #34495e, hotpink, coral);
+        border-image-slice :1;
+        box-shadow: 0 0 16px #3338;
         padding: 50px;
         margin: 20px;
       }
-      .green{
-        border: 15px solid MediumSeaGreen;
-      }
-      .blue{
-        border: 15px solid DodgerBlue;
+      h1 { 
+        background: -webkit-linear-gradient(pink, darkblue);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
     </style>
     <body>
-        <!-- Here a loader is created which loads till response comes -->
-        <div class="d-flex justify-content-center">
-            <div class="spinner-border" 
-                 role="status" id="loading">
-                <span class="sr-only">Loading...</span>
-            </div>
+      <!-- Here a loader is created which loads till response comes -->
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status" id="loading">
+          <span class="sr-only">Loading...</span>
         </div>
-        <h1 style="text-align: center;">Data Extraction</h1>
-        <div>The content below in 2 boxes represent the extraction of data from an jsonbin</div> 
-        <div class= "foo green" id="employee1"></div>
-        <div class= "foo blue" id="employee2"></div>
+      </div>
+      <h1 style="text-align: center;font-family:Courier; ">Data Extraction</h1>
+      <div>The content below in 2 boxes represent the extraction of data from an jsonbin</div> 
+      <div class= "foo " id="employee1"></div>
+      <div class= "foo " id="employee2"></div>
     </body>
 
     <script type="text/javascript">
