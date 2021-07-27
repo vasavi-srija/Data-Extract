@@ -2,51 +2,63 @@
 <html lang="en">
     <head>
       <meta charset="UTF-8" />       
-        <meta name="viewport" 
-              content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
     </head>
+    <style type="text/css">
+      .foo{
+        background-color: lightgrey;
+        width: 300px;
+        border: 15px solid green;
+        padding: 50px;
+        margin: 20px;
+      }
+      .green{
+        border: 15px solid green;
+      }
+      .blue{
+        border: 15px solid purple;
+      }
+    </style>
     <body>
-        <!-- Here a loader is created which 
-             loads till response comes -->
+        <!-- Here a loader is created which loads till response comes -->
         <div class="d-flex justify-content-center">
             <div class="spinner-border" 
                  role="status" id="loading">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <h1>Registered Employees</h1>
-        <!-- table for showing data -->
-        <textarea id="employee1"></textarea>
-        <textarea id="employee2"></textarea>
+        <h1 style="text-align: center;">Data Extraction</h1>
+        <div>The content below in 2 boxes represent the extraction of data from an jsonbin</div> 
+        <div class= "foo green" id="employee1"></div>
+        <div class= "foo blue" id="employee2"></div>
     </body>
 
     <script type="text/javascript">
       //const api_url = "https://api.jsonbin.io/v3/b/60f95a7199892a4ae9a7db1a";
-        const api_url =
-      "https://api.jsonbin.io/v3/b/60f95a7199892a4ae9a7db1a/latest";
-// Defining async function
-async function getapi(url) {   
-    // Storing response
-    const response = await fetch(url);
-     // Storing data in form of JSON
-    var data = await response.json();
-    console.log(data);
-    document.getElementById("employee1").innerHTML = data.record.Data1;
-    document.getElementById("employee2").innerHTML = data.record.Data2;
-    console.log(data.record.name);
-    //const obj=JSON.parse(data)
-    if (response) {
-        hideloader();
-    }
-    ;
-}
-// Calling that async function
-getapi(api_url);
+      const api_url ="https://api.jsonbin.io/v3/b/60f95a7199892a4ae9a7db1a/latest";
+      // Defining async function
+      async function getapi(url) {   
+        // Storing response
+        const response = await fetch(url);
+         // Storing data in form of JSON
+        var data = await response.json();
+        //console.log(data);
+        document.getElementById("employee1").innerHTML = data.record.Data1;
+        document.getElementById("employee2").innerHTML = data.record.Data2;
+        //console.log(data.record.name);
+        //const obj=JSON.parse(data)
+        if (response) {
+            hideloader();
+        }
+        ;
+      }
+      // Calling that async function
+      getapi(api_url);
   
-// Function to hide the loader
-function hideloader() {
-    document.getElementById('loading').style.display = 'none';
-}
-  </script>
+      // Function to hide the loader
+      function hideloader() {
+        document.getElementById('loading').style.display = 'none';
+      }
+    </script>
 </html>
